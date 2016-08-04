@@ -1,11 +1,11 @@
 # pymolcolorizer
 
-Contents:
-1. Installation
-2. Examples
-3. License
+## Contents
+Installation
+Examples
+License
 
-1. Installing pymolcolorizer
+## Installing pymolcolorizer
   Prerequisites
     -The PyMOL molecular graphics software can be obtained from one of the following sources:
       A) https://sourceforge.net/projects/pymol/
