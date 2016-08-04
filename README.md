@@ -19,6 +19,8 @@
 
 ###Install within PyMOL GUI  
 The easiest way to install pymolcolorizer is through the builtin plugin manager within the PyMOL GUI. To install through the plugin manager do the following:
+
+
 1. Open the PyMOL software
 2. Navigate to the "Plugin --> Plugin Manager" option to launch the plugin manager
 3. Click on the "Install New Plugin" tab
