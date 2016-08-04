@@ -1,28 +1,31 @@
 # pymolcolorizer
 
 ## Contents
-Installation
-Examples
-License
+1. Installation
+2. Examples
+3. License
 
 ## Installing pymolcolorizer
-  Prerequisites
-    -The PyMOL molecular graphics software can be obtained from one of the following sources:
-      A) https://sourceforge.net/projects/pymol/
-      B) https://www.pymol.org/
-    -Matplotlib (http://matplotlib.org/)
-    -Numpy (http://www.numpy.org/)
-  Download pymolcolorizer
-    "git clone http://github.com/ptdolan/pymolcolorizer"
-  Add pymolcolorizer to your python path by appending the following to your .bash_profile or .bashrc
-    "export PYTHONPATH=[path_to_pymolcolorizer]:$PYTHONPATH"
-    TODO: better instructions for making pymol initialize this on startup
 
-2. Usage example
-  TODO: Example goes here. 
+###Prerequisites
+1. The PyMOL molecular graphics software can be obtained from one of the following sources:
+  * https://sourceforge.net/projects/pymol/
+  * https://www.pymol.org/
+2. Matplotlib (http://matplotlib.org/)
+3. Numpy (http://www.numpy.org/)
+
+###Download pymolcolorizer  
+"git clone http://github.com/ptdolan/pymolcolorizer"
+
+###Add pymolcolorizer to your python path by appending the following to your .bash_profile or .bashrc  
+"export PYTHONPATH=[path_to_pymolcolorizer]:$PYTHONPATH"  
+TODO: better instructions for making pymol initialize this on startup
+
+## Usage example
+*TODO: Example goes here. 
 
 
-3.
+## License
 MIT License
 
 Copyright (c) [2016] [Kevin M Dalton]
