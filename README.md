@@ -15,14 +15,18 @@
 3. Numpy (http://www.numpy.org/)
 
 ###Download pymolcolorizer  
-"git clone http://github.com/ptdolan/pymolcolorizer"
+"git clone http://github.com/kmdalton/pymolcolorizer"
 
-###Add pymolcolorizer to your python path by appending the following to your .bash_profile or .bashrc  
-"export PYTHONPATH=[path_to_pymolcolorizer]:$PYTHONPATH"  
-TODO: better instructions for making pymol initialize this on startup
+###Install within PyMOL GUI  
+The easiest way to install pymolcolorizer is through the builtin plugin manager within the PyMOL GUI. To install through the plugin manager do the following:
+1. Open the PyMOL software
+2. Navigate to the "Plugin --> Plugin Manager" option to launch the plugin manager
+3. Click on the "Install New Plugin" tab
+4. Under the "Install from local file" header click on "Choose file..."
+5. Select the "pymolcolorizer.py" file from the github repository you downloaded
 
-## Usage example
-*TODO: Example goes here. 
+## Usage example  
+At the moment, pymolcolorizer provides a parser to color a structure by residue numbers specified in a csv file. Any colormap supported by your current Matplotlib version can be used. See (http://matplotlib.org/examples/color/colormaps_reference.html) for a list of compatible colormaps. 
 
 
 ## License
