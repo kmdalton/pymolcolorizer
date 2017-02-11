@@ -66,7 +66,7 @@ def paintStructure(csvFN, colormapname=None):
     Color all the chains in a structure by the parameters in a CSV file using a global colormap including all chains
     """
     if colormapname is None:
-        colormapname = 'BuPu'
+        colormapname = 'viridis'
     painter = attributePainter(csvFN)
     for chainID in painter.chains.keys():
         painter.paintChain(chainID, colormapname=colormapname)

@@ -28,7 +28,18 @@ The easiest way to install pymolcolorizer is through the builtin plugin manager 
 5. Select the "pymolcolorizer.py" file from the github repository you downloaded
 
 ## Usage example  
-At the moment, pymolcolorizer provides a parser to color a structure by residue numbers specified in a csv file. Any colormap supported by your current Matplotlib version can be used. See (http://matplotlib.org/examples/color/colormaps_reference.html) for a list of compatible colormaps. 
+At the moment, pymolcolorizer provides a parser to color a structure by chain ID and residue numbers specified in a csv file. Any colormap supported by your current Matplotlib version can be used. See (http://matplotlib.org/examples/color/colormaps_reference.html) for a list of compatible colormaps. Selection is not supported excepting by chain IDs supplied in the CSV file. 
+
+To use pymolcolorizer, simply call
+colorFromCSV [CSV filename], [Colormap name]
+from within pymol. 
+
+A pair of example files can be found in the examples directory. To run them for instance you might type. 
+load examples/mmcpn.pdb
+colorFromCSV examples.mmcpn.csv, viridis
+
+This will color chain A and B of the MmCpn structure with the viridis colormap according to the values in the CSV file. The format for CSV input files is:
+ChainID,Residue Number(int),Value(float)
 
 
 ## License
