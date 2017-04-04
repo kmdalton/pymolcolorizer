@@ -1,4 +1,6 @@
 from pymol import cmd, stored
+from matplotlib import pyplot as plt
+import matplotlib as mpl
 from matplotlib.cm import ScalarMappable
 from matplotlib.pyplot import get_cmap
 from matplotlib.colors import Normalize
@@ -15,9 +17,11 @@ class attributePainter():
         colormap = str: kwarg for specifying colormap. can be any colormap name from matplotlib ('http://matplotlib.org/examples/color/colormaps_reference.html')
     """
     def __init__(self, csvFN = None, **kw):
-        self.colormapname = kw.get('colormap', 'bwr')
+        self.colormapname = kw.get('colormap', 'viridis')
+        self.cmap = get_cmap(self.colormapname)
         self.chains = {}
         self.norms  = None
+        self.sm = None
         if csvFN is not None:
             self.loadCSV(csvFN)
 
@@ -45,7 +49,9 @@ class attributePainter():
                     print "Line number {}  ({}) was rejected -- could not format".format(i, line)
         ranges = {chainID: (min(chain.values()), max(chain.values())) for chainID, chain in self.chains.iteritems()}
         self.norms = {chainID: Normalize(r[0], r[1]) for chainID, r in ranges.iteritems()}
+        self.sm    = {chainID: ScalarMappable(norm, self.cmap) for chainID, norm in self.norms.iteritems()}
         self.norms['global'] = Normalize(min([i[0] for i in ranges.values()]), max([i[1] for i in ranges.values()]))
+        self.sm['global']    = ScalarMappable(self.norms['global'], self.cmap) 
 
     def paintChain(self, chainID, **kw):
         colormapname = kw.get('colormapname', self.colormapname) 
@@ -80,5 +86,25 @@ def modifyBfactors(csvFN):
     for chainID in painter.chains.keys():
         painter.modifyBfactors(chainID)
 
+def saveHorizontalColorbar(csvFN, outFN, colormapname=None):
+    if colormapname is None:
+        colormapname = 'viridis'
+    painter = attributePainter(csvFN)
+    plt.figure(figsize=(2,10))
+    ax = plt.gca()
+    plt.colorbar(painter.sm['global'], cax=ax, orientation='horizontal')
+    plt.savefig(outFN, fmt=outFN[-3:])
+
+def saveVerticalColorbar(csvFN, outFN, colormapname=None):
+    if colormapname is None:
+        colormapname = 'viridis'
+    painter = attributePainter(csvFN)
+    plt.figure(figsize=(10,2))
+    ax = plt.gca()
+    plt.colorbar(painter.sm['global'], cax=ax, orientation='vertical')
+    plt.savefig(outFN, fmt=outFN[-3:])
+
 cmd.extend('colorFromCSV', paintStructure)
 cmd.extend('bfacsFromCSV', modifyBfactors)
+cmd.extend('saveHorizontalColorbar', saveHorizontalColorbar)
+cmd.extend('saveVerticalColorbar', saveVerticalColorbar)
